@@ -3,3 +3,4 @@ generators:
 - cluster-api-ipam-provider-in-cluster.yaml
 - cluster-api-provider-vsphere.yaml
 - dns-operator-route53.yaml
+- image-distribution-operator.yaml
