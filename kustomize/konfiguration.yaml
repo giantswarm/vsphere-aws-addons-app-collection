@@ -1,0 +1,34 @@
+apiVersion: konfigure.giantswarm.io/v1alpha1
+kind: ManagementClusterConfiguration
+metadata:
+  name: vsphere-aws-addons-collection-konfiguration
+  namespace: giantswarm
+spec:
+  configuration:
+    applications:
+      excludes: {}
+      includes:
+        exactMatchers:
+          - cluster-api-cleaner-vsphere
+          - cluster-api-ipam-provider-in-cluster
+          - cluster-api-provider-vsphere
+          - dns-operator-route53
+          - image-distribution-operator
+    cluster:
+      name: "${cluster_name}"
+  destination:
+    namespace: giantswarm
+    naming:
+      suffix: "konfiguration"
+      useSeparator: true
+  reconciliation:
+    interval: 1m0s
+    retryInterval: 10s
+    suspend: false
+  sources:
+    flux:
+      gitRepository:
+        name: giantswarm-config
+        namespace: flux-giantswarm
+      service:
+        url: source-controller.flux-giantswarm.svc
