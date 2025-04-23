@@ -1,7 +1,7 @@
 apiVersion: konfigure.giantswarm.io/v1alpha1
 kind: ManagementClusterConfiguration
 metadata:
-  name: collection-konfiguration
+  name: vsphere-aws-addons-collection-konfiguration
   namespace: giantswarm
 spec:
   configuration:
