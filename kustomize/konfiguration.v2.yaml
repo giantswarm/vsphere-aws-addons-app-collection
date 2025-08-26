@@ -1,0 +1,50 @@
+---
+apiVersion: konfigure.giantswarm.io/v1alpha1
+kind: Konfiguration
+metadata:
+  name: vsphere-aws-addons-collection-konfiguration
+  namespace: giantswarm
+spec:
+  targets:
+    schema:
+      reference:
+        name: management-cluster-configuration
+        namespace: giantswarm
+    defaults:
+      variables:
+        - name: installation
+          value: ""
+    iterations:
+      cluster-api-cleaner-vsphere:
+        variables:
+          - name: app
+            value: cluster-api-cleaner-vsphere
+      cluster-api-ipam-provider-in-cluster:
+        variables:
+          - name: app
+            value: cluster-api-ipam-provider-in-cluster
+      cluster-api-provider-vsphere:
+        variables:
+          - name: app
+            value: cluster-api-provider-vsphere
+      dns-operator-route53:
+        variables:
+          - name: app
+            value: dns-operator-route53
+      image-distribution-operator:
+        variables:
+          - name: app
+            value: image-distribution-operator
+  destination:
+    namespace: giantswarm
+    naming:
+      suffix: konfiguration
+  reconciliation:
+    interval: 1m
+    retryInterval: 10s
+    suspend: true
+  sources:
+    flux:
+      gitRepository:
+        name: "giantswarm-config"
+        namespace: "flux-giantswarm"
