@@ -5,3 +5,4 @@ resources:
 - dns-operator-route53.yaml
 - image-distribution-operator.yaml
 - konfiguration.yaml
+- konfiguration.v2.yaml
