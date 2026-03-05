@@ -1,3 +1,2 @@
 resources:
-- dns-operator-route53.yaml
 - konfiguration.v2.yaml
